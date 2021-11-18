@@ -1,0 +1,41 @@
+
+
+<table>
+    <td>
+        Search<input type="textsearch"[(ngModel)]="textsearch">
+    </td>
+     <td>
+        Usertype
+        <select id="Usertype" name="Usertype" (change)="Add($event)">
+            <option value="">--Please choose an option--</option>
+            <option *ngIf="!Staff1 && !Student1" value="Admin">Admin</option>
+            <option *ngIf="!Staff1 && !Student1" value="Staff">Staff</option>
+            <option *ngIf="!Student1" value="Student">Student</option>
+        </select> 
+     </td>
+    <br>
+    <br>
+    
+    <td><input type="button" value="Adduser" (click)="Adduser()"></td>
+    <br>
+    <br>
+   
+    <td><input type="button" value="Logout" (click)="Logout()"></td> 
+
+
+</table>
+<table border=1 width="50%">
+    <tr>
+        <td>Username</td>
+        <td>Password</td>
+        <td>Usertype</td>
+        <td>Delete</td>
+    </tr>
+    <tr *ngFor="let s of Users1 |new1:textsearch; index as i">
+
+        <td>{{s.Username}}</td>
+        <td>{{s.Password}}</td>
+        <td>{{s.Usertype}}</td>
+        <td> <input type="button" value="Delete" (click)=Delete(i)> </td>
+    </tr>
+</table> 
